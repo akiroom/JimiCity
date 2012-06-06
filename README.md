@@ -1,0 +1,4 @@
+JimiCity
+========
+
+SimCityっぽい感じのJavaアプリケーションです。
