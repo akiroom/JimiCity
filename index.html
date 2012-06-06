@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Jimicity by akiroom</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Jimicity</h1>
+        <p>SimCityっぽい感じのJavaアプリケーションです。</p>
+        <p class="view"><a href="https://github.com/akiroom/JimiCity">View the Project on GitHub <small>akiroom/JimiCity</small></a></p>
+        <ul>
+          <li><a href="https://github.com/akiroom/JimiCity/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/akiroom/JimiCity/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/akiroom/JimiCity">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>JimiCity</h1>
+
+<p><img src="https://github.com/akiroom/JimiCity/raw/master/screenshot.png"></p>
+
+<p>SimCityっぽい感じのJavaアプリケーションです。</p>
+
+<p>慶應義塾大学湘南藤沢キャンパス
+2010年春学期「オブジェクト指向プログラミング」という授業の
+最終課題として製作した、都市シミュレーターです。
+シティセンター効果などのシミュレーションを行い、
+ある程度自然な都市が生成されるようになっています。
+授業で指定された学校専用ライブラリを使用しています。
+<strong>ライブラリが足りずにコンパイルできないはずなので、t07013ha.jarを実行してください。</strong></p>
+
+<h2>ライセンス</h2>
+
+<p>© Hiroki Akiyama <a href="http://akiroom.com/">http://akiroom.com/</a> All rights reserved.</p>
+
+<p>私的な利用の範囲を超えて利用する場合は著作権者の許諾を必要とするものとします。</p>
+
+<p>作者または著作権者は、契約行為、不法行為、またはそれ以外であろうと、ソフトウェアに起因または関連し、あるいはソフトウェアの使用またはその他の扱いによって生じる一切の請求、損害、その他の義務について何らの責任も負わないものとします。 </p>
+
+<h2>提出したレポート</h2>
+
+<p>最終課題提出当時のレポートの一部を、Markdown記法に変更して転載します。</p>
+
+<h3>概要</h3>
+
+<p>地味な街並みを眺めて楽しむ、「JimiCity」を開発しました。</p>
+
+<h3>使い方</h3>
+
+<p>起動してながめることが目的のゲームです。キーボードのキーを押すと、それぞれのインタラクションを楽しむことができます。</p>
+
+<ul>
+<li>[↑][→][↓][←]
+
+<ul>
+<li>それぞれの方向へ画面の表示領域を移動します</li>
+</ul>
+</li>
+<li>[スペース]
+
+<ul>
+<li>シティセンターの地価を高騰させます</li>
+</ul>
+</li>
+<li>[B]
+
+<ul>
+<li>シティセンターに不況の嵐を巻き起こします</li>
+</ul>
+</li>
+<li>[W]
+
+<ul>
+<li>標準的な街の景況へリセットします</li>
+</ul>
+</li>
+<li>[R]
+
+<ul>
+<li>一部の地域を区画整理します</li>
+</ul>
+</li>
+<li>[/]
+
+<ul>
+<li>街の発展アルゴリズムをシティセンター方式かランダム方式に切り換えます。</li>
+</ul>
+</li>
+<li>[Q]
+
+<ul>
+<li>違う街へ行きます（都市をリセットします）</li>
+</ul>
+</li>
+</ul><h3>評価してほしい点（努力した点）</h3>
+
+<h4>斜め視点を綺麗に表示していること</h4>
+
+<p>初めてSimCityのようなゲームを作るにあたって、最初は初代SimCityのように縦横に直角に交わるグリッド表示を考えていたのですが、どうしてもSimCity2000以降の、斜め見下ろし型の画面にしたかったので、苦戦して斜め視点の画面表示を実現しました。</p>
+
+<p>ゲームらしいゲームを作った事がなく、ノウハウがまったくなかったのですが、グリッド表示を作ってから順番にずらして少しずつ試行錯誤を繰り返して、ようやく実現できました。おそらくpres2の履歴を見ていただければ試行錯誤が分かると思います。</p>
+
+<h4>再帰を用いてそれっぽい道路を生成</h4>
+
+<p>当初の予定では直線のみの道路を自動生成しようと考えていたのですが、Ｌ字カーブやＴ字路を用意したいと考え、再帰処理を使って任意の点から道路を伸ばしていくことで、日本の道路にありがちな変なルートの道路をつくることができました。</p>
+
+<h4>アルゴリズムを工夫して市街地や郊外を再現</h4>
+
+<p>最初に本システムが一段落ついた時は、ランダムに街を表示していたため高層ビルの横に一戸建て住宅があるような不自然な街並みでした。以前、SimCityでは「シティーセンター」という概念をとりいれていると聞いていたことを思い出し、街の中心地を設定してそこからどんどん低層なビルが並ぶようにプログラムを書き換えたところ、本物の街のような街並みがつくれました。起動中に[／]キーを押すことで、製作初期のランダムな街並みアルゴリズムへと切り替えることができます。</p>
+
+<h4>多態性を利用してソースコードの可読性を確保</h4>
+
+<p>街並の１タイルごとのタイルをすべて、抽象クラスであるTileクラスから継承し、各タイルに抽象メソッドsetRandomImage()を実行することで、そのタイルがビルでも道路でも、条件分岐せずに画像をセットできるようにしました。</p>
+
+<h4>標準ライブラリを再実装（ただし、正しいプログラミングとは言えない）</h4>
+
+<p>関数の戻り値にX,Y座標を返せるPointクラスを使いたかったのですが、チェックシートでは使用が禁止されていたため、自分でつくりました。</p>
+
+<h4>ドット絵を全部自分で描いた</h4>
+
+<p>SimCity2000のデータを勝手に使おうかと考えたのですが、せっかく作ったプログラムを著作権の都合で公開できないのは時間が無駄になってしまうと考え、すべてのドット絵を一から新しく描きました。結果としてちょっと下手な感じのシステムになっていますが、絶対に誰も見たことが無い街をお見せすることができるので、よかったかな、と考えています。</p>
+
+<h4>軽量化に悩んだ</h4>
+
+<p>大量の画像を動かす上、オブプロの独自仕様ライブラリでは画像のキャッシュができないようだったので、軽量化に頭を悩ませました。普段使っている潤沢なライブラリを使えず、基本中の基本をやるしかなかったのですが、結果として多少高速なシステムができたと思います。</p>
+
+<p>具体的には、以下の点を工夫しました</p>
+
+<ul>
+<li>縦横２倍にしたドット絵で画面サイズ中の計算量を減らす</li>
+<li>1枚あたり9KBのpngファイルを使っていたが、
+1枚あたり50KBぐらいあるGIFファイルに切り替えた
+(ファイルサイズが大きくなったがGIFファイルの方が描画が速かった)</li>
+<li>再描画フラグを用意してループ中の再描画を極力減らした</li>
+<li>当初は全部描き換えていたが、表示中の場所のみを再描画するようにした</li>
+</ul><h3>感想</h3>
+
+<p>制限の厳しいオブプロのライブラリのみという環境のもと、まったく開発経験のない斜め見下ろし型のゲーム画面開発という体験は、かなりハードなものでした。しかし、徐々に街ができていく感覚は、SimCityのそれとは違ったものがあり、とても楽しかったです。</p>
+
+<p>心残りな点は、教育上の理由とはいえ指定以外のライブラリの使用が禁止されている点です。例えば禁止されているjava.awt.Colorや数々のGUIライブラリをそのまま使えたら本格的に応用的なゲームをつくることもできるかもしれません。実際に授業外でもつくってみようかな、と思いました。</p>
+
+<p>Colorクラスについては、BCanvasクラスのdrawTextメソッドを使う際に使いたかったので、実装を探し出して継承してColorクラスのもつ数値型を取り出す部分を置き換えようとしたのですが、実装部を見つけることができず、泣く泣くdrawTextの引数にnullを指定して白色のみを使いました。</p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/akiroom">akiroom</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
